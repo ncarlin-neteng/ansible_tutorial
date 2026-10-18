@@ -1,0 +1,17 @@
+	- Can install ansible on fedora/RHEL distros with sudo dnf install ansible
+
+	- You should make a file named "Inventory" in your Ansible folder that has the IPs of the servers that you'll be managing with ansible.
+
+	- We will also want to make a "ansible.cfg" file in the directory taht we are working in. We can add some config like the following:
+		○ [defaults]
+		○ inventory - inventory
+		○ private_key_file = ~./ssh
+
+	- We can see a list of our hosts with the following command:
+		○ ansible all --list-hosts
+
+	- We can run this command to get a ton of information about the hosts:
+		○ ansible all -m gather_facts
+	- We can limit things down to one host with --limit, for example
+		○ ansible all -m gather_facts --limit 192.168.158.128
+

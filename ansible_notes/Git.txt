@@ -1,0 +1,11 @@
+	- We can check the status of git and see if there's anything to push with:
+		○ git status
+
+	- IF we see something in red, it means its not up to date or not added.
+
+	- We can use "git add filename" to add it to git.
+
+	- We can then commit the changes with "git commit" and add a comment, with "git commit -m "Comment" "
+
+	- We can then push those changes to git with "git push origin main"
+
