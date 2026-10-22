@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rocky Linux • Apache • Ansible</title>
+  <style>
+    :root {
+      --rocky: #10b981;
+      --rocky-dark: #059669;
+      --bg: #0f172a;
+      --card: #1e293b;
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+    .container {
+      max-width: 720px;
+      width: 100%;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+    h1 {
+      font-size: 2.4rem;
+      font-weight: 700;
+      background: linear-gradient(90deg, var(--rocky), #34d399);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.5rem;
+    }
+    .subtitle {
+      color: var(--muted);
+      font-size: 1.1rem;
+    }
+    .grid {
+      display: grid;
+      gap: 1.25rem;
+    }
+    .card {
+      background: var(--card);
+      border-radius: 12px;
+      padding: 1.5rem;
+      border: 1px solid #334155;
+    }
+    .card h2 {
+      color: var(--rocky);
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+    .card p { color: var(--muted); }
+    footer {
+      text-align: center;
+      margin-top: 2.5rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+    .badge {
+      display: inline-block;
+      background: var(--rocky-dark);
+      color: white;
+      font-size: 0.75rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      margin-left: 0.5rem;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>It works</h1>
+      <p class="subtitle">Served by Apache on Rocky Linux<br>Deployed with Ansible</p>
+    </header>
+
+    <div class="grid">
+      <div class="card">
+        <h2>Rocky Linux <span class="badge">OS</span></h2>
+        <p>Enterprise-grade, community-supported Linux. This host is running a clean Rocky install managed by Ansible.</p>
+      </div>
+      <div class="card">
+        <h2>Apache HTTP Server <span class="badge">Web</span></h2>
+        <p>The classic web server. Listening on port 80 and serving this page from <code>/var/www/html</code>.</p>
+      </div>
+      <div class="card">
+        <h2>Ansible <span class="badge">Automation</span></h2>
+        <p>This page (and the httpd service + firewall rules) were pushed out by an Ansible playbook. Idempotent, repeatable, boring—in a good way.</p>
+      </div>
+    </div>
+
+    <footer>
+      Generated for learning • Rocky Linux + Apache + Ansible
+    </footer>
+  </div>
+</body>
+</html>

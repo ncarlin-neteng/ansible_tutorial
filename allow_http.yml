@@ -1,0 +1,11 @@
+---
+
+  - hosts: all
+    become: true
+    tasks:
+      - name: Permanently allow HTTP through firewalld
+        firewalld:
+          service: http
+          permanent: yes
+          state: enabled
+          immediate: yes
