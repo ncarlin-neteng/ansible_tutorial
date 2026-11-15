@@ -1,0 +1,21 @@
+---
+
+- hosts: all
+  become: true
+  tasks:
+
+    - name: Upgrade all packages
+      ansible.builtin.dnf:
+        name: "*"
+        state: latest
+        update_cache: true
+
+    - name: add php support for apache
+      ansible.builtin.dnf:
+        name:
+          - php
+          - php-fpm
+          - php-cli
+        state: present
+        update_cache: true
+
