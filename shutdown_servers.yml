@@ -1,0 +1,24 @@
+---
+
+- name: Shutdown Ubuntu servers
+  hosts: all
+  become: true
+  tasks:
+    - name: Shutting down servers
+      ansible.builtin.command: /usr/sbin/shutdown -h now
+      async: 1
+      poll: 0
+      ignore_errors: true
+
+    - name: Waiting 30 seconds for shutdown to complete...
+      ansible.builtin.pause:
+        seconds: 30
+
+    - name: Verifying servers are no longer reachable on SSH...
+      ansible.builtin.wait_for:
+        host: all
+        port: 22
+        state: stopped
+        timeout: 15
+        delegate_to: localhost
+        ignore_errors: true
