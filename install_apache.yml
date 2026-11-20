@@ -11,35 +11,27 @@
         update_cache: yes
       when: ansible_facts['distribution'] == "Ubuntu"
 
-    - name: install apache2 package
+    - name: install apache2 and php packages
       apt:
-        name: apache2
+        name:
+          - apache2
+          - libapache2-mod-php
         state: latest
       when: ansible_facts['distribution'] == "Ubuntu"
 
-    - name: add php support for apache
-      apt:
-        name: libapache2-mod-php
-        state: latest
-      when: ansible_facts['distribution'] == "Ubuntu"
 
       # Rocky/RHEL-based
 
     - name: update repository index
       ansible.builtin.dnf:
         update_cache: yes
-      when: ansible_facts['distribution'] == "Rocky"
+      when: ansible_facts['distribution'] == "Rocky" or ansible_facts['distribution'] == "RedHat"
 
-    - name: install apache2 package
-      ansible.builtin.dnf:
-        name: httpd
-        state: latest
-      when: ansible_facts['distribution'] == "Rocky"
-
-    - name: add php support for apache
+    - name: install apache2 and php packages on RHEL/Rocky servers
       ansible.builtin.dnf:
         name:
+          - httpd
           - php
           - php-fpm
         state: latest
-      when: ansible_facts['distribution'] == "Rocky"
+      when: ansible_facts['distribution'] == "Rocky" or ansible_facts['distribution'] == "RedHat"
