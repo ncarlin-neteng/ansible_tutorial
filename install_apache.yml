@@ -4,34 +4,10 @@
   become: true
   tasks:
 
-    # Ubuntu-based
-
-    - name: update repository index
-      apt:
-        update_cache: yes
-      when: ansible_facts['distribution'] == "Ubuntu"
-
-    - name: install apache2 and php packages
-      apt:
+    - name: install apache and php
+      package:
         name:
-          - apache2
-          - libapache2-mod-php
+          - "{{ apache_package }}"
+          - "{{ php_package }}"
         state: latest
-      when: ansible_facts['distribution'] == "Ubuntu"
-
-
-      # Rocky/RHEL-based
-
-    - name: update repository index
-      ansible.builtin.dnf:
         update_cache: yes
-      when: ansible_facts['distribution'] == "Rocky" or ansible_facts['distribution'] == "RedHat"
-
-    - name: install apache2 and php packages on RHEL/Rocky servers
-      ansible.builtin.dnf:
-        name:
-          - httpd
-          - php
-          - php-fpm
-        state: latest
-      when: ansible_facts['distribution'] == "Rocky" or ansible_facts['distribution'] == "RedHat"
